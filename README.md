@@ -38,3 +38,6 @@ Two Weeks from Today
 Let them know that more information will be provided next class.
 
 Be pumped!
+
+
+Google maps api key: AIzaSyDKWU21UydhwdpDXv3wiZUZzkmN53Kwey4
