@@ -1,8 +1,50 @@
 .col-centered{
-    float: none;
-    margin: 0 auto;
+  float: none;
+  margin: 0 auto;
 }
 
 .row {
   margin-top: 20px;
+}
+
+.google-maps {
+  position: relative;
+  padding-bottom: 50%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+}
+
+.google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.twoThirds {
+  width: 66.667%;
+}
+
+.half {
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.voting-area {
+  padding: 10px 20px;
+}
+
+.card {
+  width: 350px;
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
 }

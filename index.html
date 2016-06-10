@@ -18,40 +18,69 @@
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     </head>
-  <body>
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-12">
-          <form>
-  					<div class="form-group">
-  						<label for="">Name</label>
-  						<input type="text" class="form-control" id="nameInput">
-  					</div>
-
-  					<button type="submit" class="btn btn-primary" id="addName">Submit</button>
-  				</form>
+<body>
+  <div class="twoThirds">
+  <div class="google-maps">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+  </div>
+  <div class="half">
+    <div class="card">
+      <img src="http://lorempixel.com/image_output/sports-q-c-300-200-5.jpg">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Button</a>
         </div>
-        </div>
-        <div class="row">
-        <div class="col-md-12">
-          <p>
-            This button has been clicked: <span></span>
-          </p>
-  					<button type="submit" class="btn btn-primary" id="addName">Click Me</button>
-
+    </div>
+  </div>
+  <div class="half">
+      <div class="card">
+        <img src="http://lorempixel.com/image_output/sports-q-c-300-200-5.jpg">
+        <div class="card-block">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Button</a>
         </div>
       </div>
-
     </div>
+  </div>
 
 
 
-        <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script>window.jQuery || document.write('<script src="assets/javascript/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="assets/javascript/vendor/bootstrap.min.js"></script>
-        <script src="assets/javascript/main.js"></script>
 
-    </body>
+
+
+
+
+
+
+  <div class="col-md-12">
+
+
+    <div class="voting-area">
+      <form>
+        <div class="form-group">
+          <label for="">Name</label>
+          <input type="text" class="form-control" id="nameInput">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="addName">Submit</button>
+      </form>
+      <p>This button has been clicked: <span></span></p>
+      <button type="submit" class="btn btn-primary" id="clickMe">Click Me</button>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/javascript/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+  <script src="assets/javascript/vendor/bootstrap.min.js"></script>
+  <script src="assets/javascript/main.js"></script>
+
+</body>
 </html>
