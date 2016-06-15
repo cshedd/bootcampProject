@@ -60,7 +60,7 @@ function initMap() {
   			infoWindow.setContent('HERE U IS BITCH');
   			map.setCenter(yourPosition);
   			map.setZoom(10);
-  		})
+  		});
   	}
 
   	// var geocoder = new google.maps.Geocoder();
@@ -70,9 +70,3 @@ initMap();
 
 setPins();
 setPins();
-
-
-
-
-
-

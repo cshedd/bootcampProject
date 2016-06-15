@@ -1,3 +1,4 @@
+
 // var dataRef = new Firebase('https://webdevprojectut.firebaseio.com/');
 //
 // function promptUserName() {
@@ -25,3 +26,8 @@
 // }
 //
 // promptUserName();
+
+// Closes Chat Room Box
+$('.closeChat').on('click',function(){
+	$('.collapse').collapse('hide');
+});
