@@ -1,20 +1,27 @@
-// function promptUserName() {
-//   swal({title: "Hello there!", text: "Please enter your name:", type: "input",   showCancelButton: true, closeOnConfirm: false, animation: "slide-from-top",   inputPlaceholder: "Write something"},
+// var dataRef = new Firebase('https://webdevprojectut.firebaseio.com/');
 //
-//   function(inputValue) {
-//     if (inputValue === false) return false;
-//     if (inputValue === "") {
+// function promptUserName() {
+//   swal({
+//     title: "Hello there!",
+//     text: "Please enter your name:",
+//     type: "input",
+//     showCancelButton: false,
+//     closeOnConfirm: true,
+//     confirmButtonText: "Submit",
+//     inputPlaceholder: "Type your name"},
+//
+//   function(nameInput) {
+//     if (nameInput === false) return false;
+//     if (nameInput === "") {
 //       swal.showInputError("Please enter your name:");
 //       return false;
 //     }
-//     swal("Nice!", "You wrote: " + inputValue, "success");
+//     var userData = {
+// 		    name: nameInput
+// 	};
+//     dataRef.push(userData);
+//
 //   });
 // }
 //
 // promptUserName();
-
-function userName() {
-  swal({   title: "Sweet!",   text: "Here's a custom image.",   imageUrl: "images/thumbs-up.jpg" });
-}
-
-userName();

@@ -1,75 +1,142 @@
 <!doctype html>
 <html class="no-js" lang="">
   <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Bootcamp Project</title>
-        <meta name="description" content="Group Project for UT Coding Bootcamp">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bootcamp Project</title>
+    <meta name="description" content="Group Project for UT Coding Bootcamp">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/javascript/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/javascript/vendor/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  </head>
 
-        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
-
-        <link rel="stylesheet" href="assets/css/bootstrap/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-
-        <script src="assets/javascript/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="assets/javascript/vendor/sweetalert.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
-
-    </head>
 <body>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKWU21UydhwdpDXv3wiZUZzkmN53Kwey4&callback=initMap" async defer></script> -->
-  <div class="row">
+  <!-- Static navbar -->
+<div class="jumbotron">
+  <span id="projectTitle">ThisOrThat</span>
+</div>
 
-
-  <div class="twoThirds">
-  <div class="google-maps" id="map">
-
-  </div>
-  <div class="half">
-    <div class="card">
-      <img src="https://s-media-cache-ak0.pinimg.com/736x/2d/82/66/2d82669c93f637977053290ff95dba13.jpg">
-        <div class="card-block">
-          <h4 class="card-title">Greenbelt Hiking Trails</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="chatFeature">
+      <div class="panel panel-primary">
+        <a class="chatButton" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <div class="panel-heading" id="accordion">
+            <span class="glyphicon glyphicon-comment"></span> Chat
+          </div>
+        </a>
+      <div class="panel-collapse collapse" id="collapseOne">
+        <div class="panel-body">
+            <ul class="chat">
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Andrew</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Herbert</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>20 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Cherrie</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>30 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Andrew</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Herbert</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>20 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Cherrie</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>30 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+            </ul>
         </div>
-    </div>
-  </div>
-  <div class="half">
-      <div class="card">
-          <img src="https://s.evbuc.com/https_proxy?url=http%3A%2F%2Feventbrite-s3.s3.amazonaws.com%2Feventlogos%2F689086%2Fbeggspoolphoto.jpg&sig=ADR2i7_W969K9Qg9JhwukEniD427Iw4Atw">
-        <div class="card-block">
-          <h4 class="card-title">Barton Springs Pool</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="panel-footer">
+          <div class="input-group">
+            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+            <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      <div id="map" class="google-maps">
+
+      </div>
+      <div class="half">
+        <div class="card">
+          <img src="https://s-media-cache-ak0.pinimg.com/736x/2d/82/66/2d82669c93f637977053290ff95dba13.jpg">
+            <div class="card-block">
+              <h4 class="card-title">Greenbelt Hiking Trails</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+      </div>
+      <div class="half">
+          <div class="card">
+            <img src="https://s.evbuc.com/https_proxy?url=http%3A%2F%2Feventbrite-s3.s3.amazonaws.com%2Feventlogos%2F689086%2Fbeggspoolphoto.jpg&sig=ADR2i7_W969K9Qg9JhwukEniD427Iw4Atw">
+            <div class="card-block">
+              <h4 class="card-title">Barton Springs Pool</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
+    </div>
 <div class="oneThird pull-right">
-  <div class="placeholder">
-    <p>Chat Room Feature Goes Here</p>
-  </div>
-</div>
+
 
 </div>
-
-
-
-
-
-
-
+</div>
+</div>
   <div class="col-md-12">
-
-
     <div class="voting-area">
       <form>
         <div class="form-group">
           <label for="">Name</label>
           <input type="text" class="form-control" id="nameInput">
         </div>
-
         <button type="submit" class="btn btn-primary" id="addName">Submit</button>
       </form>
       <p>This button has been clicked: <span></span></p>
