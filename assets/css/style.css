@@ -1,4 +1,4 @@
-.col-centered{
+.col-centered {
   float: none;
   margin: 0 auto;
 }
@@ -8,44 +8,56 @@
   margin-right: 0px;
 }
 
-.chat
-{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.chat li
-{
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px dotted #B3A9A9;
+#just {
+  font-family: Quicksand;
+  font-weight: 300;
 }
 
-.chat li.left .chat-body
-{
-    margin-left: 0px;
+#decide {
+  font-family: Quicksand;
+  font-weight: 700;
 }
 
-.chat li.right .chat-body
-{
-    margin-right: 60px;
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body {
+  margin-left: 20px;
+}
+
+.chat li.right .chat-body {
+  margin-right: 60px;
+}
+
+.chat li .chat-body p {
+  margin: 0;
+  color: #777777;
+}
+
+.panel-footer {
+  padding: 10px 30px;
+  background-color: #f5f5f5;
+  border-top: 2px solid #d3d3d3;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 
-.chat li .chat-body p
-{
-    margin: 0;
-    color: #777777;
-}
-
-.panel .slidedown .glyphicon, .chat .glyphicon
-{
-    margin-right: 5px;
+.panel .slidedown .glyphicon, .chat .glyphicon {
+  margin-right: 5px;
 }
 
 .panel-heading {
-  padding: 15px 20px;
+  padding: 16px 40px;
   background: #337ab7;
 }
 
@@ -60,7 +72,7 @@
 }
 
 .panel-primary {
-  border: #0471A6 1px solid;
+  border: none;
   border-radius: 0px;
   background: #0471A6;
 }
@@ -92,7 +104,8 @@ a:hover, a:focus {
   color: #fff;
   text-decoration: none;
 }
-/*::-webkit-scrollbar-track
+/*
+::-webkit-scrollbar-track
 {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
@@ -109,6 +122,17 @@ a:hover, a:focus {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }*/
+
+.closeChat {
+  padding: 5px;
+  color: #999999;
+  background: #d3d3d3;
+  text-align: center;
+}
+
+.closeChat:hover {
+  cursor: pointer;
+}
 
 .google-maps {
   position: relative;
@@ -148,13 +172,13 @@ a:hover, a:focus {
   padding: 0px;
   height: 61px;
   line-height: 61px;
-  text-align: center;
+  text-align: left;
 }
 
 #projectTitle {
   color: #fff;
   font-size: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 .placeholder p {
