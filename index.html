@@ -16,10 +16,94 @@
   </head>
 
 <body>
+  <!-- Static navbar -->
+<div class="jumbotron">
+  <span id="projectTitle">ThisOrThat</span>
+</div>
+
+    <div class="chatFeature">
+      <div class="panel panel-primary">
+        <a class="chatButton" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          <div class="panel-heading" id="accordion">
+            <span class="glyphicon glyphicon-comment"></span> Chat
+          </div>
+        </a>
+      <div class="panel-collapse collapse" id="collapseOne">
+        <div class="panel-body">
+            <ul class="chat">
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Andrew</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Herbert</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>20 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Cherrie</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>30 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Andrew</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Herbert</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>20 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+              <li class="left clearfix">
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font">Cherrie</strong> <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>30 mins ago</small>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.</p>
+                </div>
+              </li>
+            </ul>
+        </div>
+        <div class="panel-footer">
+          <div class="input-group">
+            <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+            <span class="input-group-btn">
+              <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container-fluid">
   <div class="row">
-    <div class="twoThirds">
-      <div class="google-maps">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7098.94326104394!2d78.0430654485247!3d27.172909818538997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1385710909804" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+    <div class="col-md-8">
+      <div id="map" class="google-maps">
+        
       </div>
       <div class="half">
         <div class="card">
@@ -41,9 +125,9 @@
         </div>
     </div>
 <div class="oneThird pull-right">
-  <div id='firechat-wrapper'>
-    <a href='#' onclick='login();'>Login with Twitter</a>
-  </div>
+
+
+</div>
 </div>
 </div>
   <div class="col-md-12">
@@ -65,9 +149,7 @@
 
 
 
-  <!-- Firechat -->
-  <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
-  <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <script>window.jQuery || document.write('<script src="assets/javascript/vendor/jquery-1.11.2.min.js"><\/script>')</script>
