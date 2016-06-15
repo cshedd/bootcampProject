@@ -17,8 +17,9 @@ var map;
 // 	map.setZoom(10);
 // })
 
-function setPins(geocoder, map){
-	var firstPlace = "Houston,TX";
+function setPins(){
+  	var geocoder = new google.maps.Geocoder();
+	var firstPlace = prompt("find a location");
 	// var secondPlace = places[1];
 
 	geocoder.geocode({"address": firstPlace}, function(results, status){
@@ -27,11 +28,13 @@ function setPins(geocoder, map){
 			console.log(typeof(results[0].geometry.location));
 			var marker = new google.maps.Marker({
 				map:map,
-				position: results[0].geometry.location
+				position: results[0].geometry.location,
+				animation: google.maps.Animation.DROP,
+				title: firstPlace
 			});
-			map.setCenter(results[0].geometry.location);
-			map.setZoom(10);
-			alert (results[0].geometry.location);
+
+			marker.setMap(map);
+
 		} else{
 			alert('you fucked up');
 		}
@@ -54,17 +57,19 @@ function initMap() {
   			};
 
   			infoWindow.setPosition(yourPosition);
-  			infoWindow.setContent('you are here');
+  			infoWindow.setContent('HERE U IS BITCH');
   			map.setCenter(yourPosition);
-  			map.setZoom(12);
+  			map.setZoom(10);
   		})
   	}
 
-  	var geocoder = new google.maps.Geocoder();
-  	setPins(geocoder,map);
+  	// var geocoder = new google.maps.Geocoder();
 }
 
 initMap();
+
+setPins();
+setPins();
 
 
 
