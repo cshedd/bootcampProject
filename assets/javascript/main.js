@@ -1,72 +1,93 @@
-var map;
+// var map;
 
-// var places = ["Los Angeles, CA", "barton springs", "homeslice pizza"];
+// function setPins(){
+//   	var geocoder = new google.maps.Geocoder();
+// 	var firstPlace = prompt("find a location");
+// 	// var secondPlace = places[1];
 
-// $("#clickMe").on('click',function(){
+// 	geocoder.geocode({"address": firstPlace}, function(results, status){
+// 		if (status === google.maps.GeocoderStatus.OK){
+// 			// map.setCenter(results[0].geometry.location);
+// 			console.log(typeof(results[0].geometry.location));
+// 			var marker = new google.maps.Marker({
+// 				map:map,
+// 				position: results[0].geometry.location,
+// 				animation: google.maps.Animation.DROP,
+// 				title: firstPlace
+// 			});
 
-// 	var newObject = {
-// 		lat: 30.284933,
-// 		lng: -97.750701
-// 	}
-// 	var marker = new google.maps.Marker({
-// 	position: {lat: newObject.lat, lng: newObject.lng},
-// 	map: map
+// 			marker.setMap(map);
+
+// 		} else{
+// 			alert('you fucked up');
+// 		}
 // 	});
+// }
 
-// 	map.setCenter(marker.position);
-// 	map.setZoom(10);
-// })
+// function initMap() {
+//   	map = new google.maps.Map(document.getElementById('map'), {
+//     // center: {lat: -34.397, lng: 150.644},
+//     // zoom: 6
+//   	});
 
-function setPins(){
-  	var geocoder = new google.maps.Geocoder();
-	var firstPlace = prompt("find a location");
-	// var secondPlace = places[1];
+//   	var infoWindow = new google.maps.InfoWindow({map:map});
 
-	geocoder.geocode({"address": firstPlace}, function(results, status){
-		if (status === google.maps.GeocoderStatus.OK){
-			// map.setCenter(results[0].geometry.location);
-			console.log(typeof(results[0].geometry.location));
-			var marker = new google.maps.Marker({
-				map:map,
-				position: results[0].geometry.location,
-				animation: google.maps.Animation.DROP,
-				title: firstPlace
-			});
+//   	if (navigator.geolocation) {
+//   		navigator.geolocation.getCurrentPosition(function(position){
+//   			var yourPosition = {
+//   				lat: position.coords.latitude,
+//   				lng: position.coords.longitude
+//   			};
 
-			marker.setMap(map);
+//   			infoWindow.setPosition(yourPosition);
+//   			infoWindow.setContent('HERE U IS BITCH');
+//   			map.setCenter(yourPosition);
+//   			map.setZoom(10);
+//   		});
+//   	}
 
-		} else{
-			alert('you fucked up');
-		}
-	});
-}
+//   	// var geocoder = new google.maps.Geocoder();
+// }
 
-function initMap() {
-  	map = new google.maps.Map(document.getElementById('map'), {
-    // center: {lat: -34.397, lng: 150.644},
-    // zoom: 6
-  	});
+// initMap();
 
-  	var infoWindow = new google.maps.InfoWindow({map:map});
+// setPins();
+// setPins();
 
-  	if (navigator.geolocation) {
-  		navigator.geolocation.getCurrentPosition(function(position){
-  			var yourPosition = {
-  				lat: position.coords.latitude,
-  				lng: position.coords.longitude
-  			};
 
-  			infoWindow.setPosition(yourPosition);
-  			infoWindow.setContent('HERE U IS BITCH');
-  			map.setCenter(yourPosition);
-  			map.setZoom(10);
-  		});
-  	}
+//CHAT////////////////////////////////////////
 
-  	// var geocoder = new google.maps.Geocoder();
-}
+var ref = new Firebase("https://testingherbert.firebaseio.com/");
 
-initMap();
+var usersRef = ref.child("users");
 
-setPins();
-setPins();
+// var userName = prompt("What is your name?");
+
+usersRef.set({
+  alanisawesome: {
+    date_of_birth: "June 23, 1912",
+    full_name: "Alan Turing"
+  },
+  gracehop: {
+    date_of_birth: "December 9, 1906",
+    full_name: "Grace Hopper"
+  }
+});
+
+// function addingUser (){
+// 	var getName = usersRef.child(userName);
+// 	console.log(getName);
+// }
+
+// addingUser();
+
+ref.on("value", function(snapshot) {
+  console.log(snapshot.val());
+  var tree = snapshot.val();
+  var user = snapshot.exists();
+  console.log(user);
+
+
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
