@@ -1,0 +1,42 @@
+*{
+  
+}
+.round-button {
+  width: 30%;
+}
+
+.round-button-circle {
+  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/2d/82/66/2d82669c93f637977053290ff95dba13.jpg");
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+    border-radius: 50%;
+  border: 10px; 
+  overflow: hidden;
+  box-shadow: 0 0 3px gray;
+}
+
+.round-button-circle: hover {
+}
+
+.round-button a {
+  display: block; 
+  float: left;
+  width: 100%;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  line-height: 1em;
+  margin-top:-0.5em;
+  text-align: center;
+}
+
+/*.placeOne {
+  background-image: url("https://s-media-cache-ak0.pinimg.com/736x/2d/82/66/2d82669c93f637977053290ff95dba13.jpg");
+  float: left;
+}
+
+.placeTwo {
+  background-image: url("https://s.evbuc.com/https_proxy?url=http%3A%2F%2Feventbrite-s3.s3.amazonaws.com%2Feventlogos%2F689086%2Fbeggspoolphoto.jpg&sig=ADR2i7_W969K9Qg9JhwukEniD427Iw4Atw");
+  float: right;
+}*/
+
