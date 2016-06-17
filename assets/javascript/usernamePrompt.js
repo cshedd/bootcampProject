@@ -1,11 +1,7 @@
 
 var ref = new Firebase('https://webdevprojectut.firebaseio.com/');
 
-
-//CHAT////////////////////////////////////////
-
 var usersRef = ref.child("users");
-// var name = prompt("What is your name? (first last)");
 
 var inDatabase;
 
@@ -14,18 +10,14 @@ function setUser(name){
     inDatabase = snapshot.child("users/"+ name).exists();
 
     if (inDatabase){
-      console.log("user in database");
-      console.log(inDatabase);
+      alert("user in database");
     }
     else{
-      // console.log("user not in database");
-
       usersRef.child(name).set({
         name: name,
         vote: 0
       });
-      console.log("user added as: " + name);
-      // other();
+      alert("user added as: " + name);
     }
   });
 }
@@ -39,9 +31,17 @@ function setUser(name){
 //     console.log("alan is"+ alan);
 //   });
 // }
+var testingName;
+
+function testing(name){
+  testingName = name;
+  console.log("in otherfunction");
+  console.log("otherfunction: "+ testingName);
+}
 
 
 function promptUserName() {
+  var something;
   swal({
     title: "Hello there!",
     text: "Please enter your name:",
@@ -50,20 +50,20 @@ function promptUserName() {
     closeOnConfirm: true,
     confirmButtonText: "Submit",
     inputPlaceholder: "Type your name"},
-
-  function(nameInput) {
-    if (nameInput === false) return false;
-    if (nameInput === "") {
-      swal.showInputError("Please enter your name:");
-      return false;
+    function(nameInput) {
+      if (nameInput === false) return false;
+      if (nameInput === "") {
+        swal.showInputError("Please enter your name:");
+        return false;
+      }
+      // setUser(nameInput);
+      console.log("in function:"+ nameInput);
+      something = nameInput;
+      testing(nameInput);
     }
-		userName = nameInput;
-		console.log("in function: "+ userName);
-    setUser(nameInput);
+  );
 
-
-
-  });
+  console.log("something is" + something);
 }
 
 promptUserName();
