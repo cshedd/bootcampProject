@@ -60,34 +60,67 @@
 var ref = new Firebase("https://testingherbert.firebaseio.com/");
 
 var usersRef = ref.child("users");
+var userName = prompt("What is your name? (first last)");
 
-// var userName = prompt("What is your name?");
+var inDatabase;
 
-usersRef.set({
-  alanisawesome: {
-    date_of_birth: "June 23, 1912",
-    full_name: "Alan Turing"
-  },
-  gracehop: {
-    date_of_birth: "December 9, 1906",
-    full_name: "Grace Hopper"
-  }
-});
+function setUser(){
+	ref.once("value",function(snapshot){
+		inDatabase = snapshot.child("users/"+ userName).exists();
 
-// function addingUser (){
-// 	var getName = usersRef.child(userName);
-// 	console.log(getName);
-// }
+		if (inDatabase){
+			console.log("user in database");
+			console.log(inDatabase);
+		}
+		else{
+			// console.log("user not in database");
 
-// addingUser();
+			usersRef.child(userName).set({
+				userName: userName,
+				vote: 0
+			});
+			console.log("user added as: " + userName);
+			// other();
+		}
+	});
+}
 
-ref.on("value", function(snapshot) {
-  console.log(snapshot.val());
-  var tree = snapshot.val();
-  var user = snapshot.exists();
-  console.log(user);
+setUser();
+
+function other(stuff){
+	ref.once("value", function(snapshot){
+		var alan = snapshot.child("users/alanisawesome").exists();
+		console.log("in other function");
+		console.log("alan is"+ alan);
+	});
+}
+
+//////
+// usersRef.set({
+//   alanisawesome: {
+//     date_of_birth: "June 23, 1912",
+//     full_name: "Alan Turing"
+//   },
+//   gracehop: {
+//     date_of_birth: "December 9, 1906",
+//     full_name: "Grace Hoper"
+//   }
+// });
+
+// // function addingUser (){
+// // 	var getName = usersRef.child(userName);
+// // 	console.log(getName);
+// // }
+
+// // addingUser();
+
+// ref.on("value", function(snapshot) {
+//   console.log(snapshot.val());
+//   var tree = snapshot.val();
+//   var user = snapshot.child("users/alanisawesome").exists();
+//   console.log("user is" + user);
 
 
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
+// }, function (errorObject) {
+//   console.log("The read failed: " + errorObject.code);
+// });
