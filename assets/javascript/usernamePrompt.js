@@ -1,7 +1,45 @@
 
-var dataRef = new Firebase('https://webdevprojectut.firebaseio.com/');
+var ref = new Firebase('https://webdevprojectut.firebaseio.com/');
 
-var userName;
+
+//CHAT////////////////////////////////////////
+
+var usersRef = ref.child("users");
+// var name = prompt("What is your name? (first last)");
+
+var inDatabase;
+
+function setUser(name){
+  ref.once("value",function(snapshot){
+    inDatabase = snapshot.child("users/"+ name).exists();
+
+    if (inDatabase){
+      console.log("user in database");
+      console.log(inDatabase);
+    }
+    else{
+      // console.log("user not in database");
+
+      usersRef.child(name).set({
+        name: name,
+        vote: 0
+      });
+      console.log("user added as: " + name);
+      // other();
+    }
+  });
+}
+
+// setUser();
+
+// function other(stuff){
+//   ref.once("value", function(snapshot){
+//     var alan = snapshot.child("users/alanisawesome").exists();
+//     console.log("in other function");
+//     console.log("alan is"+ alan);
+//   });
+// }
+
 
 function promptUserName() {
   swal({
@@ -19,27 +57,19 @@ function promptUserName() {
       swal.showInputError("Please enter your name:");
       return false;
     }
-    var userData = {
-		    name: nameInput
-	};
 		userName = nameInput;
 		console.log("in function: "+ userName);
+    setUser(nameInput);
 
-    dataRef.push(userData);
-		test(nameInput);
+
 
   });
-	// userName = nameInput;
-
-}
-
-function test(name){
-	alert(name);
 }
 
 promptUserName();
-console.log("the name: " + userName);
 
+
+////////////////////////////////////////////////////////////////////////////////////
 // Closes Chat Room Box
 	$('.closeChat').on('click',function(){
 		$('.collapse').collapse('hide');

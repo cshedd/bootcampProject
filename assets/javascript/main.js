@@ -55,45 +55,45 @@
 // setPins();
 
 
-//CHAT////////////////////////////////////////
+// //CHAT////////////////////////////////////////
 
-var ref = new Firebase("https://testingherbert.firebaseio.com/");
+// var ref = new Firebase("https://testingherbert.firebaseio.com/");
 
-var usersRef = ref.child("users");
-var userName = prompt("What is your name? (first last)");
+// var usersRef = ref.child("users");
+// var userName = prompt("What is your name? (first last)");
 
-var inDatabase;
+// var inDatabase;
 
-function setUser(){
-	ref.once("value",function(snapshot){
-		inDatabase = snapshot.child("users/"+ userName).exists();
+// function setUser(){
+// 	ref.once("value",function(snapshot){
+// 		inDatabase = snapshot.child("users/"+ userName).exists();
 
-		if (inDatabase){
-			console.log("user in database");
-			console.log(inDatabase);
-		}
-		else{
-			// console.log("user not in database");
+// 		if (inDatabase){
+// 			console.log("user in database");
+// 			console.log(inDatabase);
+// 		}
+// 		else{
+// 			// console.log("user not in database");
 
-			usersRef.child(userName).set({
-				userName: userName,
-				vote: 0
-			});
-			console.log("user added as: " + userName);
-			// other();
-		}
-	});
-}
+// 			usersRef.child(userName).set({
+// 				userName: userName,
+// 				vote: 0
+// 			});
+// 			console.log("user added as: " + userName);
+// 			// other();
+// 		}
+// 	});
+// }
 
-setUser();
+// setUser();
 
-function other(stuff){
-	ref.once("value", function(snapshot){
-		var alan = snapshot.child("users/alanisawesome").exists();
-		console.log("in other function");
-		console.log("alan is"+ alan);
-	});
-}
+// function other(stuff){
+// 	ref.once("value", function(snapshot){
+// 		var alan = snapshot.child("users/alanisawesome").exists();
+// 		console.log("in other function");
+// 		console.log("alan is"+ alan);
+// 	});
+// }
 
 //////
 // usersRef.set({
