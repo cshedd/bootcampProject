@@ -28,6 +28,20 @@
 // promptUserName();
 
 // Closes Chat Room Box
-$('.closeChat').on('click',function(){
-	$('.collapse').collapse('hide');
+	$('.closeChat').on('click',function(){
+		$('.collapse').collapse('hide');
+	});
+
+//Chat box will display on right column on large screens then collapses and becomes button on smaller screen sizes
+$(window).resize(function () {
+	function addChatClass() {
+		var viewportWidth = $(window).width();
+    if (viewportWidth > 1150) {
+      $('.panel-collapse.collapse').addClass("in");
+    }
+		if (viewportWidth < 1150) {
+      $('.panel-collapse.collapse.in').removeClass("in");
+    }
+	}
+	addChatClass();
 });

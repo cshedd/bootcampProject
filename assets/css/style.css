@@ -51,7 +51,6 @@
   border-bottom-left-radius: 0px;
 }
 
-
 .panel .slidedown .glyphicon, .chat .glyphicon {
   margin-right: 5px;
 }
@@ -80,6 +79,7 @@
 {
     overflow-y: scroll;
     height: 250px;
+    background: #fff;
 }
 
 .chatButton {
@@ -87,10 +87,6 @@
   background: #0471A6;
   border: #0471A6;
   font-size: 20px;
-}
-
-.panel-body {
-  background: #fff;
 }
 
 .chatFeature {
@@ -216,4 +212,18 @@ a:hover, a:focus {
 
 .card-block {
   padding: 10px;
+}
+
+@media only screen and (min-width : 1150px) {
+  .chatFeature {
+    width: 400px;
+  }
+
+  .panel-body {
+    height: 100vh;
+  }
+
+  .collapse.in {
+    border-left: 2px #ccc solid;
+  }
 }
