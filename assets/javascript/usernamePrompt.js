@@ -1,11 +1,11 @@
-//access the database 
+//access the database
 var ref = new Firebase('https://webdevprojectut.firebaseio.com/');
 
 //reference the user portion of database
 var usersRef = ref.child("users");
 
 //user name provided by user
-var userName; 
+var userName;
 
 //T/F if userName already in database
 var inDatabase;
@@ -40,7 +40,7 @@ function addMessage(){
   if (message == ""){
     alert("you said nothing");
   }
-  else{  
+  else{
     var newMessage = {
       name: userName,
       message: message,

@@ -31,10 +31,7 @@
         </a>
       <div class="panel-collapse collapse in" id="collapseOne">
         <div class="panel-body">
-            <ul class="chat">
-
-
-            </ul>
+            <ul class="chat"></ul>
         </div>
         <div class="panel-footer">
           <div class="input-group">
@@ -57,18 +54,39 @@
       <div id="map" class="google-maps">
         <!-- HERBERT TESTING -->
       </div>
-      <div class="half">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="weatherButton">
+            <div class="">
+              <span class="glyphicon glyphicon-cloud"></span> Current Weather
+              <div class="weatherDisplay">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="instructions">
+            <p>Instructions: Click on an image to vote</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
         <div class="card">
-          <img src="https://s-media-cache-ak0.pinimg.com/736x/2d/82/66/2d82669c93f637977053290ff95dba13.jpg">
+          <div class="imageButton1">
+            <img class="img-responsive"  src="assets/images/Hey-Cupcake.jpg">
+          </div>
             <div class="card-block">
-              <h4 class="card-title">Greenbelt Hiking Trails</h4>
+              <h4 class="card-title">Hey Cupcake</h4>
               <p class="card-text">Votes: <span id="voteCount1"></span></p>
             </div>
         </div>
       </div>
-      <div class="half">
+      <div class="col-md-6">
           <div class="card">
-            <img src="https://s.evbuc.com/https_proxy?url=http%3A%2F%2Feventbrite-s3.s3.amazonaws.com%2Feventlogos%2F689086%2Fbeggspoolphoto.jpg&sig=ADR2i7_W969K9Qg9JhwukEniD427Iw4Atw">
+            <div class="imageButton2">
+              <img class="img-responsive"  src="assets/images/Barton-Springs.jpg">
+            </div>
             <div class="card-block">
               <h4 class="card-title">Barton Springs Pool</h4>
               <p class="card-text">Votes: <span id="voteCount2"></span></p>
@@ -87,10 +105,8 @@
   <script>window.jQuery || document.write('<script src="assets/javascript/vendor/jquery-1.11.2.min.js"><\/script>')</script>
   <script src="assets/javascript/vendor/bootstrap.min.js"></script>
   <!-- <script src="assets/javascript/main.js"></script> -->
-
-
 <script src="assets/javascript/usernamePrompt.js"></script>
-  <link rel='stylesheet' href='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.css' />
-  <script src='https://cdn.firebase.com/libs/firechat/2.0.1/firechat.min.js'></script>
+<script src="assets/javascript/weatherDisplay.js"></script>
+<script src="assets/javascript/buttons.js"></script>
 </body>
 </html>
