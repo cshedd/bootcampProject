@@ -1,9 +1,9 @@
 var map;
 
 function setPins(){
-  	var geocoder = new google.maps.Geocoder();
+  var geocoder = new google.maps.Geocoder();
 	var firstPlace = prompt("find a location");
-	// var secondPlace = places[1];
+	// var secondPlace = places[1];  
 
 	geocoder.geocode({"address": firstPlace}, function(results, status){
 		if (status === google.maps.GeocoderStatus.OK){
@@ -19,7 +19,7 @@ function setPins(){
 			marker.setMap(map);
 
 		} else{
-			alert('you fucked up');
+			alert('Error Loading Map!');
 		}
 	});
 }
@@ -40,16 +40,16 @@ function initMap() {
   			};
 
   			infoWindow.setPosition(yourPosition);
-  			infoWindow.setContent('HERE U IS BITCH');
+  			infoWindow.setContent('You Are Here');
   			map.setCenter(yourPosition);
   			map.setZoom(10);
   		});
   	}
-
+    // setPins();
   	// var geocoder = new google.maps.Geocoder();
 }
 
 initMap();
 
-setPins();
-setPins();
+// setPins();
+// setPins();
