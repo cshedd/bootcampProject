@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.container-fluid {
+  background-color: #202020;
+}
+
 .row {
   margin-left: 0px;
   margin-right: 0px;
@@ -16,11 +20,13 @@
 
 #just {
   font-family: Quicksand;
+  color: black;
   font-weight: 300;
 }
 
 #decide {
   font-family: Quicksand;
+  color: black;
   font-weight: 700;
 }
 
@@ -57,7 +63,7 @@
 
 .panel-heading {
   padding: 16px 40px;
-  background: #337ab7;
+  background: #202020;
 }
 
 .panel-primary>.panel-heading {
@@ -80,6 +86,15 @@
     overflow-y: scroll;
     height: 250px;
     background: #fff;
+    background-color: #202020;
+}
+
+.primary-font {
+  color: white;
+}
+
+p {
+  color: white;
 }
 
 .chatButton {
@@ -138,6 +153,7 @@ a:hover, a:focus {
   margin-bottom: 10px;
 }
 
+
 .google-maps iframe {
   position: absolute;
   top: 0;
@@ -163,12 +179,14 @@ a:hover, a:focus {
   font-size: 20px;
 }
 .jumbotron {
-  background-color: #061826;
+  background-color: white;
+  font: black;
   margin-bottom: 0px;
   padding: 0px;
   height: 61px;
   line-height: 61px;
   text-align: left;
+  border-bottom: solid black;
 }
 
 #projectTitle {
