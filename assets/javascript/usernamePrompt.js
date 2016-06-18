@@ -19,14 +19,14 @@ function setUser(name){
     inDatabase = snapshot.child("users/"+ name).exists();
 
     if (inDatabase){
-      alert("user in database");
+      console.log("user in database");
     }
     else{
       usersRef.child(name).set({
         name: name,
-        vote: 0
+        vote: false
       });
-      alert("user added as: " + name);
+      console.log("user added as: " + name);
     }
   });
 }
@@ -88,7 +88,7 @@ function main() {
         swal.showInputError("Please enter your name:");
         return false;
       }
-      // setUser(name);
+      setUser(name);
       userName = name;
       $("#btn-chat").on("click", addMessage);
       chatRef.on("child_added", loadChat);
@@ -138,6 +138,12 @@ function loadButtons(){
     $("#nameOne").html(optionOne.name);
     $("#voteCount1").html(optionOne.votes);
 
+    $("#imageTwo").append("<img class='img-responsive' value=2 src=" + optionTwo.imgFilePath +">");
+    $("#nameTwo").html(optionTwo.name);
+    $("#voteCount2").html(optionTwo.votes);
+
+    // var userSnapshot = snapshot.child("users/" + userName).val();
+
     $('.imageButton').on('click', function() { 
       swal({title: "Vote Received!",   
         text: "Thank you for participating",
@@ -145,34 +151,48 @@ function loadButtons(){
         confirmButtonText: "Close",
         closeOnConfirm: true });
 
+      var buttonValue = $(this).attr("value");
+      // console.log(buttonValue);
+      console.log(userName);
+      //has the user already voted
+      var userSnapshot = snapshot.child("users/" + userName).val();
+      var user = ref.child("users/" + userName);
+
+      console.log(user.vote);
+      // if (userSnapshot.vote == false){
+      //   if (buttonValue == 1){
+      //     var button = ref.child("places/optionOne");
+      //     var count = snapshot.child("places/optionOne").val().votes;
+      //     count += 1 
+
+      //     button.update({
+      //       votes: count
+      //     })
+
+      //     $("#voteCount1").html(button.votes);
+
+      //     user.update({
+      //       vote: true
+      //     })
+
+      //     console.log("count for one: " + count);
+      //   }
+      // }
     });
-
-    $("#imageTwo").append("<img class='img-responsive' value=2 src=" + optionTwo.imgFilePath +">");
-    $("#nameTwo").html(optionTwo.name);
-    $("#voteCount2").html(optionTwo.votes);
-
-    // $('.imageButton2').on('click', function() {
-    //   swal({title: "Vote Received!",
-    //     text: "Thank you for participating",
-    //     type: "success", confirmButtonColor: "#2ecc71",
-    //     confirmButtonText: "Close",
-    //     closeOnConfirm: true });
-    // });
-
   })
 }
 
 function mainImages(){
 
-  var hour = moment().format("LTS");
-  console.log("the hour is: " + hour);
+  // var hour = moment().format("LTS");
+  // console.log("the hour is: " + hour);
   //later add that if the date changes so do the two suggestions 
   //reset the vote 
   // if the time of day is midnight reset
 
   // placesRef.set({
   //  optionOne: {
-  //    name: "Barton Spring Pool",
+  //    name: "Barton Springs Pool",
   //    imgFilePath: 'assets/images/Barton-Springs.jpg',
   //    votes: 0
   //  },
