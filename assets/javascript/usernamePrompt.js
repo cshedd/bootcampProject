@@ -24,10 +24,11 @@ function setUser(name){
     else{
       usersRef.child(name).set({
         name: name,
-        vote: 0
+        vote: false
       });
       console.log("User added as " + userName + "!");
     }
+    buttons();
   });
 }
 
@@ -51,6 +52,8 @@ function addMessage(){
   $("#btn-input").val("");
 }
 
+
+//load the chat
 function loadChat(childSnapshot, prevChildKey){
   var key =childSnapshot.key();
   var name = childSnapshot.val().name;
@@ -61,6 +64,7 @@ function loadChat(childSnapshot, prevChildKey){
   $(".chat").append("<li id="+ key +" class='left clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>" + name + "</strong> <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>" + timeFromNow + "</small></div><p>" + message + "</p></div></li>");
 }
 
+//refresh the chat
 function refeshChat(){
   chatRef.on("child_added", function(childSnapshot,prevChildKey){
     var key =childSnapshot.key();
@@ -124,9 +128,13 @@ $(window).on("resize", function () {
 
 
 
-//////////////////////////////////////////////////////////////////
+// VOTES ////////////////////////////////////////////////////////////////
+
+//References the places node
 var placesRef = ref.child("places");
 
+
+//updates the votes on the screen
 function updateVote(){
   placesRef.on("child_added",function(childSnapshot,prevChildKey){
     var key = childSnapshot.key();
@@ -137,29 +145,36 @@ function updateVote(){
     else{
       $("#voteCount2").html(votes);
     }
-    // console.log("key is:" + votes);
-    // $("#voteCount1").html(.votes);
   });  
 }
 
-
+//Main function for the voting buttons
 function buttons(){
 
   ref.once("value", function(snapshot){
     var optionOne = snapshot.child("places/optionOne").val();
     var optionTwo = snapshot.child("places/optionTwo").val();
 
+    //load the first button
     $("#imageOne").append("<img class='img-responsive' value=1 src=" + optionOne.imgFilePath +">");
     $("#nameOne").html(optionOne.name);
     $("#voteCount1").html(optionOne.votes);
 
+    //load the second button
     $("#imageTwo").append("<img class='img-responsive' value=2 src=" + optionTwo.imgFilePath +">");
     $("#nameTwo").html(optionTwo.name);
     $("#voteCount2").html(optionTwo.votes);
 
+    //if user already voted 
     var alreadyVoted = false;
+
+    //who the user already voted for 
     var votedFor = 0;
-    console.log("voted for is:" + votedFor);
+
+    var userVote = snapshot.child("users/" + userName).val();
+    // console.log(userVote.vote);
+    // console.log(userVote);
+    // console.log("voted for is:" + votedFor);
     $('.imageButton').on('click', function() { 
 
       swal({title: "Vote Received!",   
@@ -175,82 +190,125 @@ function buttons(){
       var userSnapshot = snapshot.child("users/" + userName).val();
       var user = ref.child("users/" + userName);
 
-      // console.log(userSnapshot.vote);
+      // console.log(userSnapshot.val().vote);
 
       // console.log(buttonValue);
       if (buttonValue == 1 && alreadyVoted == false){
           // clickCounter++;
           var button = ref.child("places/optionOne");
           var count = snapshot.child("places/optionOne").val().votes;
-          console.log("first count:" + count);
-          count += 1; 
-          console.log("second count: " + count);
+          var inUser = ref.child("users/" + userName);
+          var test = snapshot.child("users/" + userName).val().vote;
+          console.log(test);
+          if (test == true){
+            swal({title: "Can't vote twice!",   
+              text: "Thank you for participating",
+              type: "error", confirmButtonColor: "#2ecc71",
+              confirmButtonText: "Close",
+              closeOnConfirm: true });
+          }
+          else{
+            count += 1;             
+          }
+          // console.log("first count:" + count);
+
+          // console.log("second count: " + count);
 
           button.update({
             votes:count
-          })
+          });
           alreadyVoted = true;
           votedFor = buttonValue;
+          // console.log("voted for is:" + votedFor);
+
+
+          inUser.update({
+            vote: alreadyVoted
+          });
       }
       else if (buttonValue == 2 && alreadyVoted == false){
           var button = ref.child("places/optionTwo");
           var count = snapshot.child("places/optionTwo").val().votes;
-          console.log("first count:" + count);
-          count += 1; 
-          console.log("second count: " + count);
+          var inUser = ref.child("users/" + userName);
+          var test = snapshot.child("users/" + userName).val().vote;
+          console.log(test);
+          if (test == true){
+            swal({title: "Can't vote twice!",   
+              text: "Thank you for participating",
+              type: "error", confirmButtonColor: "#2ecc71",
+              confirmButtonText: "Close",
+              closeOnConfirm: true });
+          }
+          else{
+            count += 1;             
+          }
+          // console.log("second count: " + count);
 
           button.update({
             votes:count
-          })
+          });
           alreadyVoted = true;
           votedFor = buttonValue;
+          // console.log("voted for is:" + votedFor);
+
+
+          inUser.update({
+            vote: alreadyVoted
+          });
       }
 
       else if(alreadyVoted == true){
-        if (votedFor == 1 && buttonValue==2){
-          var button = ref.child("places/optionTwo");
-          var count = snapshot.child("places/optionTwo").val().votes;
-          console.log("first count:" + count);
-          count += 1; 
-          console.log("second count: " + count);
+        swal({title: "Can't vote twice!",   
+          text: "Thank you for participating",
+          type: "error", confirmButtonColor: "#2ecc71",
+          confirmButtonText: "Close",
+          closeOnConfirm: true });
+        // if (votedFor == 1 && buttonValue==2){
+        //   var button = ref.child("places/optionTwo");
+        //   var count = snapshot.child("places/optionTwo").val().votes;
+        //   console.log("first count:" + count);
+        //   count += 1; 
+        //   console.log("second count: " + count);
 
-          button.update({
-            votes:count
-          })
+        //   button.update({
+        //     votes:count
+        //   })
 
-          var otherButton = ref.child("places/optionOne");
-          var otherCount = snapshot.child("places/optionOne").val().votes;
-          otherCount -= 1;
-          otherButton.update({
-            votes:otherCount
-          })
+        //   var otherButton = ref.child("places/optionOne");
+        //   var otherCount = snapshot.child("places/optionOne").val().votes;
+        //   otherCount -= 1;
+        //   otherButton.update({
+        //     votes:otherCount
+        //   })
 
-          alreadyVoted = true;
-          votedFor = buttonValue;
+        //   alreadyVoted = true;
+        //   votedFor = buttonValue;
+        //   console.log("voted for is:" + votedFor);
 
-        }
-        else if (votedFor == 2 && buttonValue==1){
-          var button = ref.child("places/optionOne");
-          var count = snapshot.child("places/optionOne").val().votes;
-          console.log("first count:" + count);
-          count += 1; 
-          console.log("second count: " + count);
+        // }
+        // else if (votedFor == 2 && buttonValue==1){
+        //   var button = ref.child("places/optionOne");
+        //   var count = snapshot.child("places/optionOne").val().votes;
+        //   console.log("first count:" + count);
+        //   count += 1; 
+        //   console.log("second count: " + count);
 
-          button.update({
-            votes:count
-          })
+        //   button.update({
+        //     votes:count
+        //   })
 
-          var otherButton = ref.child("places/optionTwo");
-          var otherCount = snapshot.child("places/optionTwo").val().votes;
-          otherCount -= 1;
-          otherButton.update({
-            votes:otherCount
-          })
+        //   var otherButton = ref.child("places/optionTwo");
+        //   var otherCount = snapshot.child("places/optionTwo").val().votes;
+        //   otherCount -= 1;
+        //   otherButton.update({
+        //     votes:otherCount
+        //   })
 
-          alreadyVoted = true;
-          votedFor = buttonValue;
+        //   alreadyVoted = true;
+        //   votedFor = buttonValue;
+        //   console.log("voted for is:" + votedFor);
 
-        }
+        // }
       }
       updateVote();
     });
@@ -259,27 +317,21 @@ function buttons(){
 
 function mainImages(){
 
-  // var hour = moment().format("LTS");
-  // console.log("the hour is: " + hour);
+  placesRef.set({
+   optionOne: {
+     name: "Barton Spring Pool",
+     imgFilePath: 'assets/images/Barton-Springs.jpg',
+     votes: 0
+   },
+   optionTwo: {
+     name: "Hey Cupcake",
+     imgFilePath: 'assets/images/Hey-Cupcake.jpg',
+     votes: 0 
+   }
+  });
 
-  //later add that if the date changes so do the two suggestions 
-  //reset the vote 
-  // if the time of day is midnight reset
-
-  // placesRef.set({
-  //  optionOne: {
-  //    name: "Barton Spring Pool",
-  //    imgFilePath: 'assets/images/Barton-Springs.jpg',
-  //    votes: 0
-  //  },
-  //  optionTwo: {
-  //    name: "Hey Cupcake",
-  //    imgFilePath: 'assets/images/Hey-Cupcake.jpg',
-  //    votes: 0 
-  //  }
-  // });
-
-  buttons();
 }
 
-mainImages();
+// mainImages();
+// $(document).ready(buttons);
+// buttons();
