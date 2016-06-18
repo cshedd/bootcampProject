@@ -69,7 +69,7 @@ function refeshChat(){
     var time = childSnapshot.val().time;
     var timeFromNow = moment(time).fromNow();
     $("#" + key).html("<li id="+ key +" class='left clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>" + name + "</strong> <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>" + timeFromNow + "</small></div><p>" + message + "</p></div></li>");
-  })
+  });
 }
 
 //Main function
@@ -101,14 +101,12 @@ function main() {
 main();
 
 
-////////////////////////////////////////////////////////////////////////////////////
 // Closes Chat Room Box
 	$('.closeChat').on('click',function(){
 		$('.collapse').collapse('hide');
 	});
 
-//Chat box will display on right column on large screens then collapses and becomes button on smaller screen sizes
-$(window).resize(function () {
+$(window).on("resize", function () {
 	function addChatClass() {
 		var viewportWidth = $(window).width();
     if (viewportWidth > 1150) {
@@ -117,6 +115,9 @@ $(window).resize(function () {
 		if (viewportWidth < 1150) {
       $('.panel-collapse.collapse.in').removeClass("in");
     }
+    if (viewportWidth < 480) {
+      $('.panel-collapse.collapse.in').removeClass("in");
+    }
 	}
 	addChatClass();
-});
+}).resize();
