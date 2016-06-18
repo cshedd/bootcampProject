@@ -2,7 +2,8 @@ var map;
 
 function setPins(){
   var geocoder = new google.maps.Geocoder();
-	var firstPlace = prompt("find a location");
+	var firstPlace = "2201 Barton Springs Rd, Austin, TX 78746";
+  var secondPlace = "5536 Burnet Rd, Austin, TX 78756"
 	// var secondPlace = places[1];  
 
 	geocoder.geocode({"address": firstPlace}, function(results, status){
@@ -13,7 +14,7 @@ function setPins(){
 				map:map,
 				position: results[0].geometry.location,
 				animation: google.maps.Animation.DROP,
-				title: firstPlace
+				title: "Barton Springs Pool"
 			});
 
 			marker.setMap(map);
@@ -22,6 +23,24 @@ function setPins(){
 			alert('Error Loading Map!');
 		}
 	});
+
+  geocoder.geocode({"address": secondPlace}, function(results, status){
+    if (status === google.maps.GeocoderStatus.OK){
+      // map.setCenter(results[0].geometry.location);
+      console.log(typeof(results[0].geometry.location));
+      var marker = new google.maps.Marker({
+        map:map,
+        position: results[0].geometry.location,
+        animation: google.maps.Animation.DROP,
+        title: "Hey Cupcake"
+      });
+
+      marker.setMap(map);
+
+    } else{
+      alert('Error Loading Map!');
+    }
+  });
 }
 
 function initMap() {
@@ -42,7 +61,7 @@ function initMap() {
   			infoWindow.setPosition(yourPosition);
   			infoWindow.setContent('You Are Here');
   			map.setCenter(yourPosition);
-  			map.setZoom(10);
+  			map.setZoom(12);
   		});
   	}
     // setPins();
@@ -51,5 +70,5 @@ function initMap() {
 
 initMap();
 
-// setPins();
+setPins();
 // setPins();
