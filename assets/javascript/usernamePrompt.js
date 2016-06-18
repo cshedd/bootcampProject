@@ -28,6 +28,7 @@ function setUser(name){
       });
       console.log("User added as " + userName + "!");
     }
+    //load the buttons 
     buttons();
   });
 }
@@ -110,6 +111,7 @@ main();
 		$('.collapse').collapse('hide');
 	});
 
+//resize the page based on window size
 $(window).on("resize", function () {
 	function addChatClass() {
 		var viewportWidth = $(window).width();
@@ -171,12 +173,13 @@ function buttons(){
     //who the user already voted for 
     var votedFor = 0;
 
+    //has user already voted
     var userVote = snapshot.child("users/" + userName).val();
-    // console.log(userVote.vote);
-    // console.log(userVote);
-    // console.log("voted for is:" + votedFor);
+
+    //when vote is made
     $('.imageButton').on('click', function() { 
 
+      //alert that the vote was received 
       swal({title: "Vote Received!",   
         text: "Thank you for participating",
         type: "success", confirmButtonColor: "#2ecc71",
@@ -186,21 +189,15 @@ function buttons(){
       //button 1 or 2 
       var buttonValue = $(this).attr("value");
 
-      //has the user already voted
-      var userSnapshot = snapshot.child("users/" + userName).val();
-      var user = ref.child("users/" + userName);
-
-      // console.log(userSnapshot.val().vote);
-
-      // console.log(buttonValue);
+      //if user has clicked button one and not voted
       if (buttonValue == 1 && alreadyVoted == false){
-          // clickCounter++;
+
           var button = ref.child("places/optionOne");
           var count = snapshot.child("places/optionOne").val().votes;
           var inUser = ref.child("users/" + userName);
-          var test = snapshot.child("users/" + userName).val().vote;
-          console.log(test);
-          if (test == true){
+          var userVote = snapshot.child("users/" + userName).val().vote;
+          console.log(userVote);
+          if (userVote == true){
             swal({title: "Can't vote twice!",   
               text: "Thank you for participating",
               type: "error", confirmButtonColor: "#2ecc71",
@@ -210,29 +207,26 @@ function buttons(){
           else{
             count += 1;             
           }
-          // console.log("first count:" + count);
-
-          // console.log("second count: " + count);
 
           button.update({
             votes:count
           });
           alreadyVoted = true;
           votedFor = buttonValue;
-          // console.log("voted for is:" + votedFor);
-
 
           inUser.update({
             vote: alreadyVoted
           });
       }
+
+      // if user has clicked button two and not voted 
       else if (buttonValue == 2 && alreadyVoted == false){
           var button = ref.child("places/optionTwo");
           var count = snapshot.child("places/optionTwo").val().votes;
           var inUser = ref.child("users/" + userName);
-          var test = snapshot.child("users/" + userName).val().vote;
-          console.log(test);
-          if (test == true){
+          var userVote = snapshot.child("users/" + userName).val().vote;
+          console.log(userVote);
+          if (userVote == true){
             swal({title: "Can't vote twice!",   
               text: "Thank you for participating",
               type: "error", confirmButtonColor: "#2ecc71",
@@ -242,14 +236,12 @@ function buttons(){
           else{
             count += 1;             
           }
-          // console.log("second count: " + count);
 
           button.update({
             votes:count
           });
           alreadyVoted = true;
           votedFor = buttonValue;
-          // console.log("voted for is:" + votedFor);
 
 
           inUser.update({
@@ -257,12 +249,14 @@ function buttons(){
           });
       }
 
+      //if user already voted
       else if(alreadyVoted == true){
         swal({title: "Can't vote twice!",   
           text: "Thank you for participating",
           type: "error", confirmButtonColor: "#2ecc71",
           confirmButtonText: "Close",
           closeOnConfirm: true });
+
         // if (votedFor == 1 && buttonValue==2){
         //   var button = ref.child("places/optionTwo");
         //   var count = snapshot.child("places/optionTwo").val().votes;
@@ -310,11 +304,13 @@ function buttons(){
 
         // }
       }
+      // update vote on the screen
       updateVote();
     });
   })
 }
 
+//initialize the votes for the first time (only once)
 function mainImages(){
 
   placesRef.set({
@@ -331,7 +327,3 @@ function mainImages(){
   });
 
 }
-
-// mainImages();
-// $(document).ready(buttons);
-// buttons();

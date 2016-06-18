@@ -2,10 +2,12 @@ var map;
 
 function setPins(){
   var geocoder = new google.maps.Geocoder();
+
+  //locations
 	var firstPlace = "2201 Barton Springs Rd, Austin, TX 78746";
   var secondPlace = "5536 Burnet Rd, Austin, TX 78756"
-	// var secondPlace = places[1];  
-
+ 
+  //add first marker
 	geocoder.geocode({"address": firstPlace}, function(results, status){
 		if (status === google.maps.GeocoderStatus.OK){
 			// map.setCenter(results[0].geometry.location);
@@ -24,6 +26,7 @@ function setPins(){
 		}
 	});
 
+  //add seconds marker
   geocoder.geocode({"address": secondPlace}, function(results, status){
     if (status === google.maps.GeocoderStatus.OK){
       // map.setCenter(results[0].geometry.location);
@@ -43,10 +46,10 @@ function setPins(){
   });
 }
 
+
+//create the map element
 function initMap() {
   	map = new google.maps.Map(document.getElementById('map'), {
-    // center: {lat: -34.397, lng: 150.644},
-    // zoom: 6
   	});
 
   	var infoWindow = new google.maps.InfoWindow({map:map});
@@ -64,11 +67,8 @@ function initMap() {
   			map.setZoom(10);
   		});
   	}
-    // setPins();
-  	// var geocoder = new google.maps.Geocoder();
 }
 
 initMap();
 
 setPins();
-// setPins();
