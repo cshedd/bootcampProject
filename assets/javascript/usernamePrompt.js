@@ -1,10 +1,19 @@
-
+//access the database 
 var ref = new Firebase('https://webdevprojectut.firebaseio.com/');
 
+//reference the user portion of database
 var usersRef = ref.child("users");
 
+//user name provided by user
+var userName; 
+
+//T/F if userName already in database
 var inDatabase;
 
+//reference the chat portion of database
+var chatRef = ref.child("chat");
+
+//sets the user in the database if not already in there
 function setUser(name){
   ref.once("value",function(snapshot){
     inDatabase = snapshot.child("users/"+ name).exists();
@@ -22,26 +31,31 @@ function setUser(name){
   });
 }
 
-// setUser();
+function addMessage(){
+  var message = $("#btn-input").val();
+  
+  var testTime = 1466211054437;
+  var now = moment().valueOf();
+  var fromNow = moment(testTime).fromNow();
+  console.log("message received at: "+ now);
+  console.log("from now: "+ fromNow);
+  if (message == ""){
+    alert("you said nothing");
+  }
+  else{  
+    var newMessage = {
+      name: userName,
+      message: message,
+      time: now
+    }
+    chatRef.push().set(newMessage);
+  }
 
-// function other(stuff){
-//   ref.once("value", function(snapshot){
-//     var alan = snapshot.child("users/alanisawesome").exists();
-//     console.log("in other function");
-//     console.log("alan is"+ alan);
-//   });
-// }
-var testingName;
 
-function testing(name){
-  testingName = name;
-  console.log("in otherfunction");
-  console.log("otherfunction: "+ testingName);
+  $("#btn-input").val("");
 }
-
-
-function promptUserName() {
-  var something;
+//Main function
+function main() {
   swal({
     title: "Hello there!",
     text: "Please enter your name:",
@@ -50,23 +64,21 @@ function promptUserName() {
     closeOnConfirm: true,
     confirmButtonText: "Submit",
     inputPlaceholder: "Type your name"},
-    function(nameInput) {
-      if (nameInput === false) return false;
-      if (nameInput === "") {
+    function(name) {
+      if (name === false) return false;
+      if (name === "") {
         swal.showInputError("Please enter your name:");
         return false;
       }
-      // setUser(nameInput);
-      console.log("in function:"+ nameInput);
-      something = nameInput;
-      testing(nameInput);
-    }
-  );
+      // setUser(name);
+      userName = name;
+      $("#btn-chat").on("click", addMessage);
 
-  console.log("something is" + something);
+
+    });
 }
 
-promptUserName();
+main();
 
 
 ////////////////////////////////////////////////////////////////////////////////////
