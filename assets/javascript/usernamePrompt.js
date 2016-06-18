@@ -143,53 +143,53 @@ function buttons(){
     $("#voteCount2").html(optionTwo.votes);
 
 
-    $('.imageButton').on('click', function() { 
+    // $('.imageButton').on('click', function() { 
 
-      swal({title: "Vote Received!",   
-        text: "Thank you for participating",
-        type: "success", confirmButtonColor: "#2ecc71",
-        confirmButtonText: "Close",
-        closeOnConfirm: true });
+    //   swal({title: "Vote Received!",   
+    //     text: "Thank you for participating",
+    //     type: "success", confirmButtonColor: "#2ecc71",
+    //     confirmButtonText: "Close",
+    //     closeOnConfirm: true });
 
-      //button 1 or 2 
-      var buttonValue = $(this).attr("value");
+    //   //button 1 or 2 
+    //   var buttonValue = $(this).attr("value");
 
-      //has the user already voted
-      var userSnapshot = snapshot.child("users/" + userName).val();
-      var user = ref.child("users/" + userName);
+    //   //has the user already voted
+    //   var userSnapshot = snapshot.child("users/" + userName).val();
+    //   var user = ref.child("users/" + userName);
+
+    //   console.log(userSnapshot.vote);
+    //   if (userSnapshot.vote == false){
+    //     if (buttonValue == 1){
+    //       var button = ref.child("places/optionOne");
+    //       var count = snapshot.child("places/optionOne").val().votes;
+    //       count += 1 
+
+    //       button.update({
+    //         votes: count
+    //       })
+
+    //       $("#voteCount1").html(button.votes);
+
+    //       user.update({
+    //         vote: true
+    //       })
+
+    //       console.log("count for one: " + count);
+    //     }
+    //   }
+
+    //   // user.update({
+    //   //   vote: buttonValue
+    //   // });
+
+    //   // if (buttonValue == 1){
+    //   //   var votes = ref.child("places/optionOne");
+    //   //   votes.update()  
+    //   // }
 
 
-      if (userSnapshot.vote == false){
-        if (buttonValue == 1){
-          var button = ref.child("places/optionOne");
-          var count = snapshot.child("places/optionOne").val().votes;
-          count += 1 
-
-          button.update({
-            votes: count
-          })
-
-          $("#voteCount1").html(button.votes);
-
-          user.update({
-            vote: true
-          })
-
-          console.log("count for one: " + count);
-        }
-      }
-
-      // user.update({
-      //   vote: buttonValue
-      // });
-
-      // if (buttonValue == 1){
-      //   var votes = ref.child("places/optionOne");
-      //   votes.update()  
-      // }
-
-
-    });
+    // });
   })
 }
 
