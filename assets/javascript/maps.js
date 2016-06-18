@@ -61,7 +61,7 @@ function initMap() {
   			infoWindow.setPosition(yourPosition);
   			infoWindow.setContent('You Are Here');
   			map.setCenter(yourPosition);
-  			map.setZoom(12);
+  			map.setZoom(10);
   		});
   	}
     // setPins();
