@@ -85,7 +85,7 @@ function main() {
     showCancelButton: false,
     closeOnConfirm: true,
     confirmButtonText: "Submit",
-    inputPlaceholder: "Type your name"},
+    inputPlaceholder: "Firstname Lastname"},
     function(name) {
       if (name === false) return false;
       if (name === "") {
