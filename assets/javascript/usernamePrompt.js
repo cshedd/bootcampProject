@@ -19,14 +19,14 @@ function setUser(name){
     inDatabase = snapshot.child("users/"+ name).exists();
 
     if (inDatabase){
-      swal("User already exists!");
+      console.log("User already exists!");
     }
     else{
       usersRef.child(name).set({
         name: name,
         vote: false
       });
-      swal("User added as " + userName + "!");
+      console.log("User added as " + userName + "!");
     }
   });
 }
@@ -127,6 +127,21 @@ $(window).on("resize", function () {
 //////////////////////////////////////////////////////////////////
 var placesRef = ref.child("places");
 
+function updateVote(){
+  placesRef.on("child_added",function(childSnapshot,prevChildKey){
+    var key = childSnapshot.key();
+    var votes = childSnapshot.val().votes;
+    if (key == "optionOne"){
+      $("#voteCount1").html(votes);
+    }
+    else{
+      $("#voteCount2").html(votes);
+    }
+    // console.log("key is:" + votes);
+    // $("#voteCount1").html(.votes);
+  });  
+}
+
 
 function buttons(){
 
@@ -142,7 +157,8 @@ function buttons(){
     $("#nameTwo").html(optionTwo.name);
     $("#voteCount2").html(optionTwo.votes);
 
-
+    var alreadyVoted = false;
+    // var clickCounter = 0;
     $('.imageButton').on('click', function() { 
 
       swal({title: "Vote Received!",   
@@ -158,26 +174,55 @@ function buttons(){
       var userSnapshot = snapshot.child("users/" + userName).val();
       var user = ref.child("users/" + userName);
 
-      console.log(userSnapshot.vote);
-      if (userSnapshot.vote == false){
-        if (buttonValue == 1){
+      // console.log(userSnapshot.vote);
+
+      // console.log(buttonValue);
+      if (buttonValue == 1 && alreadyVoted == false){
+          // clickCounter++;
           var button = ref.child("places/optionOne");
           var count = snapshot.child("places/optionOne").val().votes;
-          count += 1 
+          console.log("first count:" + count);
+          count += 1; 
+          console.log("second count: " + count);
 
           button.update({
-            votes: count
+            votes:count
           })
-
-          $("#voteCount1").html(button.votes);
-
-          user.update({
-            vote: true
-          })
-
-          console.log("count for one: " + count);
-        }
+          alreadyVoted = true;
       }
+      else if (buttonValue == 2 && alreadyVoted == false){
+          var button = ref.child("places/optionTwo");
+          var count = snapshot.child("places/optionTwo").val().votes;
+          console.log("first count:" + count);
+          count += 1; 
+          console.log("second count: " + count);
+
+          button.update({
+            votes:count
+          })
+          alreadyVoted = true;
+      }
+      updateVote();
+      // console.log("votes:" + optionOne.vote);
+      // if (userSnapshot.vote == true){
+      //   if (buttonValue == 1){
+      //     var button = ref.child("places/optionOne");
+      //     var count = snapshot.child("places/optionOne").val().votes;
+      //     count += 1 
+
+      //     button.update({
+      //       votes: count
+      //     })
+
+      //     $("#voteCount1").html(button.votes);
+
+      //     user.update({
+      //       vote: true
+      //     })
+
+      //     console.log("count for one: " + count);
+      //   }
+      // }
 
       // user.update({
       //   vote: buttonValue
