@@ -31,14 +31,12 @@ function setUser(name){
   });
 }
 
+//Adds new message to firebase
 function addMessage(){
   var message = $("#btn-input").val();
-  
-  var testTime = 1466211054437;
+
   var now = moment().valueOf();
-  var fromNow = moment(testTime).fromNow();
-  console.log("message received at: "+ now);
-  console.log("from now: "+ fromNow);
+
   if (message == ""){
     alert("you said nothing");
   }
@@ -50,10 +48,30 @@ function addMessage(){
     }
     chatRef.push().set(newMessage);
   }
-
-
   $("#btn-input").val("");
 }
+
+function loadChat(childSnapshot, prevChildKey){
+  var key =childSnapshot.key();
+  var name = childSnapshot.val().name;
+  var message = childSnapshot.val().message;
+  var time = childSnapshot.val().time;
+  var timeFromNow = moment(time).fromNow();
+
+  $(".chat").append("<li id="+ key +" class='left clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>" + name + "</strong> <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>" + timeFromNow + "</small></div><p>" + message + "</p></div></li>");
+}
+
+function refeshChat(){
+  chatRef.on("child_added", function(childSnapshot,prevChildKey){
+    var key =childSnapshot.key();
+    var name = childSnapshot.val().name;
+    var message = childSnapshot.val().message;
+    var time = childSnapshot.val().time;
+    var timeFromNow = moment(time).fromNow();
+    $("#" + key).html("<li id="+ key +" class='left clearfix'><div class='chat-body clearfix'><div class='header'><strong class='primary-font'>" + name + "</strong> <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>" + timeFromNow + "</small></div><p>" + message + "</p></div></li>");
+  })
+}
+
 //Main function
 function main() {
   swal({
@@ -73,6 +91,8 @@ function main() {
       // setUser(name);
       userName = name;
       $("#btn-chat").on("click", addMessage);
+      chatRef.on("child_added", loadChat);
+      setInterval('refeshChat()', 60000);
 
 
     });
